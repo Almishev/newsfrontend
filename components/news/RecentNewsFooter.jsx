@@ -45,7 +45,7 @@ const RecentNewsFooter = async () => {
                                         </h2>
                                         <div className="flex gap-x-2 text-xs font-normal text-white">
                                             <span>{r?.date}</span>
-                                            <span>{r.writerName}</span>
+                                            <span>{r.writerName || "Без автор"}</span>
                                         </div>
                                     </div>
                                 </div>

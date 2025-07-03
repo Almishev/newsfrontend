@@ -42,7 +42,7 @@ const SimpleDetailsNewCard = ({ news, type, height }) => {
         </Link>
         <div className="flex gap-x-2 text-xs font-normal text-slate-600">
           <span>{news?.date}</span>
-          <span>{news?.writerName}</span>
+          <span>{news?.writerName || "Без автор"}</span>
         </div>
         {type === "details-news" && (
           <div className="text-sm text-slate-600 pt-3 overflow-hidden" style={{maxHeight: '100px'}}>

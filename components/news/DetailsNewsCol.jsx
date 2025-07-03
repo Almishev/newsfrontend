@@ -8,9 +8,9 @@ const DetailsNewsCol = ({ news, category }) => {
   if (!news || news.length === 0) {
     return (
       <div className="w-full flex flex-col gap-[14px] pl-2">
-        <Title title={category} />
+        <Title title={category || "Без категория"} />
         <div className="bg-white p-8 text-center text-gray-500">
-          Няма новини за {category} в момента
+          Няма новини за {category || "Без категория"} в момента
         </div>
       </div>
     );
@@ -18,7 +18,7 @@ const DetailsNewsCol = ({ news, category }) => {
 
   return (
     <div className="w-full flex flex-col gap-[14px] pl-2">
-      <Title title={category} />
+      <Title title={category || "Без категория"} />
       <div className="grid grid-cols-1 gap-y-6">
         <SimpleDetailsNewCard news={news[0]} type="details-news" height={300} />
       </div>

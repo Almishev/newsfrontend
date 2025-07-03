@@ -7,9 +7,9 @@ const DetailsNews = ({category,news}) => {
   if (!news || news.length === 0) {
     return (
       <div className="w-full flex flex-col gap-[14px] pr-2 py-8">
-        <Title title={category} />
+        <Title title={category || "Без категория"} />
         <div className="bg-white p-8 text-center text-gray-500">
-          Няма новини за {category} в момента
+          Няма новини за {category || "Без категория"} в момента
         </div>
       </div>
     );
@@ -17,7 +17,7 @@ const DetailsNews = ({category,news}) => {
 
   return (
     <div className="w-full flex flex-col gap-[14px] pr-2 py-8">
-      <Title title={category} />
+      <Title title={category || "Без категория"} />
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 lg:gap-x-3">
         <SimpleDetailsNewCard news={news[0]} type="details-news" height={300} />
         {news[1] && <SimpleDetailsNewCard news={news[1]} type="details-news"  height={300} />}

@@ -38,11 +38,11 @@ const Details = async ({ params }) => {
                 <div className="flex flex-col gap-y-5 bg-white">
                   <img src={news?.image} alt="" />
                   <div className="flex flex-col gap-y-4 px-6 pb-6">
-                    <h3 className="text-red-700 uppercase font-medium text-xl">{news?.category}</h3>
+                    <h3 className="text-red-700 uppercase font-medium text-xl">{news?.category || "Без категория"}</h3>
                     <h2 className="text-3xl text-gray-700 font-bold">{news?.title}</h2>
                     <div className="flex gap-x-2 text-xs font-normal text-slate-600">
                       <span>{news?.date}/</span>
-                      <span>{news?.writerName}</span>
+                      <span>{news?.writerName || "Без автор"}</span>
                     </div>
                     <p>{parse(news?.description)}</p>
                   </div>

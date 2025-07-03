@@ -12,11 +12,11 @@ const SimpleNewsCard = ({ item, type }) => {
             </div>
             <div className='w-full h-full block absolute left-0 top-0 invisible group-hover:visible bg-white cursor-pointer opacity-5 transition-all duration-300' ></div>
             <div className='left-5 absolute bottom-4 flex justify-start items-start flex-col text-white font-semibold gap-y-2'>
-                <div className='px-[6px] py-[2px] rounded-sm text-[13px] bg-[#c80000]'>{item.category}</div>
+                <div className='px-[6px] py-[2px] rounded-sm text-[13px] bg-[#c80000]'>{item.category || "Без категория"}</div>
                 <Link href={`/news/${item.slug}`} className='text-xl'>{item.title}</Link>
                 <div className='flex gap-x-2 text-sm font-normal'>
                     <span>{item.date}</span>
-                    <span>{item.writerName}</span>
+                    <span>{item.writerName || "Без автор"}</span>
                 </div>
             </div>
         </div>

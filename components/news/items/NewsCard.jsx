@@ -20,8 +20,8 @@ const NewsCard = ({item}) => {
         </div>
       </div>
       <div className="flex flex-col gap-y-1 w-[calc(100%-100px)] md:w-[calc(100%-160px)] lg:w-[calc(100%-100px)] pl-3">
-        <Link href={`/news/category/${ item?.category}`} className="text-sm font-semibold text-[#c80000]">
-          {item?.category}
+        <Link href={`/news/category/${item?.category || "unknown"}`} className="text-sm font-semibold text-[#c80000]">
+          {item?.category || "Без категория"}
         </Link>
         <Link
           href={`/news/${ item?.slug}`}
@@ -31,7 +31,7 @@ const NewsCard = ({item}) => {
         </Link>
         <div className="flex gap-x-2 text-xs font-normal text-slate-600">
           <span>{ item?.date}</span>
-          <span>{ item?.writerName}</span>
+          <span>{item?.writerName || "Без автор"}</span>
         </div>
       </div>
     </div>

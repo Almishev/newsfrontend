@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-const { convert } = require('html-to-text');
+import parse from 'html-react-parser';
 
 const SimpleDetailsNewCard = ({ news, type, height }) => {
   return (
@@ -9,11 +9,11 @@ const SimpleDetailsNewCard = ({ news, type, height }) => {
       <div className="group relative overflow-hidden">
         <div
           style={{ height: `${height}px` }}
-          className={`w-full group-hover:scale-[1.1] transition-all duration-[1s]`}
+          className={`w-full group-hover:scale-[1.1] transition-all duration-[1s] relative`}
         >
           <Image
-            className=""
-            layout="fill"
+            className="object-cover"
+            fill
             src={
               news?.image
             }
@@ -45,12 +45,9 @@ const SimpleDetailsNewCard = ({ news, type, height }) => {
           <span>{news?.writerName}</span>
         </div>
         {type === "details-news" && (
-          <p className="text-sm text-slate-600 pt-3">
-            {
-              convert(news?.description).slice(0, 200)
-
-            }
-          </p>
+          <div className="text-sm text-slate-600 pt-3 overflow-hidden" style={{maxHeight: '100px'}}>
+            {parse(news?.description?.slice(0, 200) || "")}
+          </div>
         )}
       </div>
     </div>

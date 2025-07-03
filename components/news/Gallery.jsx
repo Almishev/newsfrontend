@@ -21,8 +21,8 @@ const Gallery = async () => {
                 {images && images.length > 0 && images.map((item, i) => (
                     <div key={i} className="w-full h-[85px] relative">
                         <Image
-                            className=""
-                            layout="fill"
+                            className="object-cover"
+                            fill
                             src={
                                 item.image
                             }

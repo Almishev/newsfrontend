@@ -9,8 +9,8 @@ const NewsCard = ({item}) => {
       <div className="relative group overflow-hidden h-full">
         <div className="group-hover:scale-[1.1] transition-all duration-[1s] w-[100px] md:w-[160px] h-[93px] lg:w-[100px] relative">
           <Image
-            className=""
-            layout="fill"
+            className="object-cover"
+            fill
             src={
               item?.image
             }

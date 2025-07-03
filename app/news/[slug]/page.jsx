@@ -7,7 +7,7 @@ import PopularNews from "@/components/news/PopularNews";
 import NewsCard from "@/components/news/items/NewsCard";
 import SimpleDetailsNewCard from "@/components/news/items/SimpleDetailsNewCard";
 import React from "react";
-import htmlParser from 'react-html-parser'
+import parse from 'html-react-parser'
 import { base_api_url } from '../../../config/config'
 import RelatedNews from "@/components/news/RelatedNews";
 import RecentNews from "@/components/news/RecentNews";
@@ -27,7 +27,7 @@ const Details = async ({ params }) => {
     <div>
       <div className="bg-white shadow-sm py-4">
         <div className="px-4 md:px-8 w-full">
-          <Breadcrumb one="sports" two={"ABET accreditation reaffirms UTSA’s"} />
+          <Breadcrumb one="sports" two={"ABET accreditation reaffirms UTSA's"} />
         </div>
       </div>
       <div className="bg-slate-200 w-full">
@@ -44,7 +44,7 @@ const Details = async ({ params }) => {
                       <span>{news?.date}/</span>
                       <span>{news?.writerName}</span>
                     </div>
-                    <p>{htmlParser(news?.description)}</p>
+                    <p>{parse(news?.description)}</p>
                   </div>
                 </div>
               </div>

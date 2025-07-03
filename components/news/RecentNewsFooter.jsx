@@ -23,10 +23,10 @@ const RecentNewsFooter = async () => {
                         if (i < 4) {
                             return <Link key={i} href={`/news/${r.slug}`} className="flex w-full">
                                 <div className="group relative overflow-hidden w-[90px] h-[75px]">
-                                    <div className="w-[90px] h-[75px] block group-hover:scale-[1.1] transition-all duration-[1s]">
+                                    <div className="w-[90px] h-[75px] block group-hover:scale-[1.1] transition-all duration-[1s] relative">
                                         <Image
-                                            className=""
-                                            layout="fill"
+                                            className="object-cover"
+                                            fill
                                             src={
                                                 r.image
                                             }

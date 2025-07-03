@@ -1,4 +1,5 @@
-import React from 'react'
+'use client'
+import React, { Suspense } from 'react'
 import Breadcrumb from "@/components/Breadcrumb";
 import Category from "@/components/Category";
 import Search from "@/components/Search";
@@ -22,7 +23,9 @@ const page = () => {
                     <div className="flex flex-wrap">
                         <div className="w-full xl:w-8/12">
                             <div className="w-full pr-0 xl:pr-4">
-                               <SearchNews/>
+                               <Suspense fallback={<div>Зареждане...</div>}>
+                                   <SearchNews/>
+                               </Suspense>
                             </div>
                         </div>
                         <div className="w-full xl:w-4/12">

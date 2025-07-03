@@ -44,8 +44,6 @@ const Header_Category = () => {
         <div className='w-full'>
             <div className='bg-[#c80000] w-full text-white uppercase font-semibold relative'>
                 <div className='px-8 flex justify-between items-center relative h-[48px]'>
-                    {/* DEBUG: Show categories array */}
-                    <pre style={{color:'black', background:'#fff', position:'absolute', zIndex:9999, top:50, left:0, fontSize:10}}>{JSON.stringify(categories, null, 2)}</pre>
                     <div onClick={() => set_cate_show(!cate_show)} className={`text-3xl flex lg:hidden font-bold h-full w-[48px] cursor-pointer justify-center items-center ${cate_show ? 'bg-[#00000026]' : ''} hover:bg-[#00000026]`}>
                         <BsList />
                     </div>

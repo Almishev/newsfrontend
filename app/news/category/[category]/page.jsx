@@ -45,7 +45,7 @@ const CategoryNews = async ({ params }) => {
                     <div className="text-6xl mb-4">📰</div>
                     <h2 className="text-2xl font-semibold text-gray-800 mb-2">Няма новини</h2>
                     <p className="text-gray-600 mb-6">
-                      В момента няма публикувани новини за категория "{category}"
+                      В момента няма публикувани новини за категория &quot;{category}&quot;
                     </p>
                     <p className="text-sm text-gray-500">
                       Проверете по-късно или разгледайте други категории

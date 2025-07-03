@@ -18,7 +18,7 @@ const Header = () => {
         <div>
             <div className='px-5 lg:px-8 flex flex-col md:flex-row md:justify-between md:items-center bg-[#333333] text-[#cccccc]'>
                 <div className='flex flex-col md:flex-row md:items-center w-full'>
-                    <span className='text-[13px] font-medium'>{moment().format('LLLL')}</span>
+                    <span className='text-[13px] font-medium'>{moment().format('D MMMM YYYY')}</span>
                     <span className='text-[11px] md:ml-6 mt-1 md:mt-0 text-blue-200'>Фенски портал за Серия А – стани автор: <a href="mailto:admin@pirinpixel.com" className="underline">admin@pirinpixel.com</a></span>
                 </div>
                 <div className='flex gap-x-[1px] mt-2 md:mt-0'>

@@ -7,6 +7,7 @@ import { IoClose } from 'react-icons/io5'
 import { BsList } from 'react-icons/bs'
 import { base_api_url } from '../config/config'
 import { useRouter } from 'next/navigation'
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa'
 
 const Header_Category = () => {
 
@@ -16,6 +17,12 @@ const Header_Category = () => {
 
     const [categories, set_categories] = useState([])
 
+    const subcategories = [
+        { name: 'Прогнози', slug: 'prognozi' },
+        { name: 'Новини', slug: 'novini' },
+        { name: 'Трансфери', slug: 'transferi' },
+        { name: 'Коментари', slug: 'komentari' },
+    ];
 
     const get_categories = async () => {
         try {
@@ -33,6 +40,7 @@ const Header_Category = () => {
 
     const [show, setShow] = useState(false)
     const [cate_show, set_cate_show] = useState(false)
+    const [openCategory, setOpenCategory] = useState(null);
 
     const search = (e) => {
         e.preventDefault()
@@ -51,7 +59,6 @@ const Header_Category = () => {
                         <Link className={`px-6 font-medium py-[13px] ${path === '/' ? 'bg-[#00000026]' : ''}`} href={'/'} >Начало</Link>
                         {
                             categories.length > 0 && categories.map((c, i) => {
-                                // Функция за получаване на логото на отбора
                                 const getTeamLogo = (teamName) => {
                                     const logos = {
                                         'Milan': 'https://football-logos.cc/logos/italy/512x512/milan.png',
@@ -64,27 +71,38 @@ const Header_Category = () => {
                                     };
                                     return logos[teamName] || null;
                                 };
-
                                 const teamLogo = getTeamLogo(c.category);
-
                                 return (
-                                    <Link
-                                        key={i}
-                                        className={`px-6 font-medium py-[13px] flex items-center gap-2 ${path === `/news/category/${c.category}` ? 'bg-[#00000026]' : ''}`}
-                                        href={`/news/category/${c.category}`}
-                                    >
-                                        {teamLogo && (
-                                            <img 
-                                                src={teamLogo} 
-                                                alt={c.category}
-                                                className="w-5 h-5 object-contain"
-                                                onError={(e) => {
-                                                    e.target.style.display = 'none';
-                                                }}
-                                            />
-                                        )}
-                                        {c.category}
-                                    </Link>
+                                    <div key={i} className='relative group'>
+                                        <Link
+                                            className={`px-6 font-medium py-[13px] flex items-center gap-2 ${path === `/news/category/${c.category}` ? 'bg-[#00000026]' : ''}`}
+                                            href={`/news/category/${c.category}`}
+                                        >
+                                            {teamLogo && (
+                                                <img 
+                                                    src={teamLogo} 
+                                                    alt={c.category}
+                                                    className="w-5 h-5 object-contain"
+                                                    onError={(e) => {
+                                                        e.target.style.display = 'none';
+                                                    }}
+                                                />
+                                            )}
+                                            {c.category}
+                                        </Link>
+                                        {/* Mega menu dropdown */}
+                                        <div className="absolute left-0 top-full min-w-[180px] bg-white text-black shadow-lg rounded-b z-30 opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto pointer-events-none transition-opacity duration-200">
+                                            {subcategories.map((sub, idx) => (
+                                                <Link
+                                                    key={sub.slug}
+                                                    href={`/news/category/${c.category}/${sub.slug}`}
+                                                    className="block px-6 py-3 hover:bg-gray-100 whitespace-nowrap border-b last:border-b-0 border-gray-200"
+                                                >
+                                                    {sub.name}
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    </div>
                                 );
                             })
                         }
@@ -121,7 +139,6 @@ const Header_Category = () => {
                     <Link className={`px-4 font-medium py-[5px] ${path === '/' ? 'bg-[#00000026]' : ''}`} href={'/'} >Начало</Link>
                     {
                         categories.length > 0 && categories.map((c, i) => {
-                            // Функция за получаване на логото на отбора
                             const getTeamLogo = (teamName) => {
                                 const logos = {
                                     'Milan': 'https://football-logos.cc/logos/italy/512x512/milan.png',
@@ -134,27 +151,43 @@ const Header_Category = () => {
                                 };
                                 return logos[teamName] || null;
                             };
-
                             const teamLogo = getTeamLogo(c.category);
-
+                            const isOpen = openCategory === i;
                             return (
-                                <Link
-                                    key={i}
-                                    className={`px-4 font-medium py-[5px] flex items-center gap-2 ${path === `/news/category/${c.category}` ? 'bg-[#00000026]' : ''}`}
-                                    href={`/news/category/${c.category}`}
-                                >
-                                    {teamLogo && (
-                                        <img 
-                                            src={teamLogo} 
-                                            alt={c.category}
-                                            className="w-4 h-4 object-contain"
-                                            onError={(e) => {
-                                                e.target.style.display = 'none';
-                                            }}
-                                        />
+                                <div key={i} className="w-full">
+                                    <button
+                                        type="button"
+                                        className={`w-full flex items-center gap-2 px-4 py-[5px] font-medium text-left ${path === `/news/category/${c.category}` ? 'bg-[#00000026]' : ''}`}
+                                        onClick={() => setOpenCategory(isOpen ? null : i)}
+                                    >
+                                        {teamLogo && (
+                                            <img 
+                                                src={teamLogo} 
+                                                alt={c.category}
+                                                className="w-4 h-4 object-contain"
+                                                onError={(e) => {
+                                                    e.target.style.display = 'none';
+                                                }}
+                                            />
+                                        )}
+                                        <span className="flex-1">{c.category}</span>
+                                        {isOpen ? <FaChevronUp className="text-xs" /> : <FaChevronDown className="text-xs" />}
+                                    </button>
+                                    {/* Подкатегории за mobile */}
+                                    {isOpen && (
+                                        <div className="pl-8 flex flex-col bg-gray-100 rounded-b pb-2">
+                                            {subcategories.map((sub) => (
+                                                <Link
+                                                    key={sub.slug}
+                                                    href={`/news/category/${c.category}/${sub.slug}`}
+                                                    className="py-2 text-base text-gray-800 hover:text-red-700 font-semibold"
+                                                >
+                                                    {sub.name}
+                                                </Link>
+                                            ))}
+                                        </div>
                                     )}
-                                    {c.category}
-                                </Link>
+                                </div>
                             );
                         })
                     }

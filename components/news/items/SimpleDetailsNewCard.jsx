@@ -26,10 +26,10 @@ const SimpleDetailsNewCard = ({ news, type, height }) => {
         ></div>
         <div className="left-5 absolute bottom-4 flex justify-start items-start gap-x-2 text-white font-semibold gap-y-2">
           <div className="px-[6px] py-[2px] rounded-sm text-[13px] bg-[#c80000]">
-            Travel
+            Seria A
           </div>
           <div className="px-[6px] py-[2px] rounded-sm text-[13px] bg-[#c80000]">
-            Travel
+            Calcio
           </div>
         </div>
       </div>

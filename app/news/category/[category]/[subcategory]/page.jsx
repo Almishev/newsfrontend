@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-const base_api_url = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+const base_api_url = process.env.NEXT_PUBLIC_API_URL;
 
 async function getNews(category, subcategory) {
   const res = await fetch(`${base_api_url}/api/category/${category}/${subcategory}`, { cache: 'no-store' });
